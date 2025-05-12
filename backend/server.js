@@ -4,11 +4,13 @@ const cors = require('cors');  // Add this at the top
 const fs = require('fs');
 const path = require('path');
 const app = express();
-const PORT = 3000;
 const { exec } = require('child_process'); // Add this line at top with other imports
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/Face')
+const PORT = process.env.PORT || 3000;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/Face';
+
+mongoose.connect(MONGODB_URI)
   .then(() => console.log('✅ MongoDB connected'))
   .catch((err) => console.error('❌ MongoDB connection failed:', err));
 
