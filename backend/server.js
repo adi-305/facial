@@ -117,7 +117,7 @@ app.post('/register', (req, res) => {
     }
     console.log('✅ Image saved at:', savePath);
   const recognizerPath = path.join(__dirname, '../python/recognizer.py'); // Adjusted path
-  exec(`python ${recognizerPath} ../python/captured.png`, async (err, stdout, stderr){
+  exec(`python ${recognizerPath} ../python/captured.png`, async (err, stdout, stderr)){
       if (err) {
         console.error('❌ Python execution error:', err);
         return res.status(500).send('Face detection failed');
