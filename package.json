@@ -8,7 +8,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node backend/server.js",
-    "build": "pip install -r ../requirements.txt && npm install"
+    "build": "pip install -r requirements.txt && npm install"
   },
   "keywords": [],
   "author": "",
