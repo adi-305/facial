@@ -8,7 +8,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node backend/server.js",
-    "build": "pip install dlib-19.22.1-cp39-cp39-win_amd64.whl && pip install -r requirements.txt && npm install"
+    "build": "git clone https://github.com/davisking/dlib && python3 setup.py install && pip install -r requirements.txt && npm install"
   },
   "keywords": [],
   "author": "",
