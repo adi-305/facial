@@ -8,7 +8,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node backend/server.js",
-    "build": "pip install --upgrade pip && pip install wheel setuptools && pip install dlib==19.24.2 && pip install -r requirements.txt && npm install"
+    "build": "apt-get update && apt-get install -y cmake libopenblas-dev liblapack-dev libx11-dev libpng-dev libjpeg-dev && pip install --upgrade pip && pip install wheel setuptools && pip install face_recognition && pip install -r requirements.txt && npm install"
   },
   "keywords": [],
   "author": "",
