@@ -8,7 +8,7 @@ const { exec } = require('child_process'); // Add this line at top with other im
 const mongoose = require('mongoose');
 
 const PORT = process.env.PORT || 3000;
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/Face';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/facial';
 
 mongoose.connect(MONGODB_URI)
   .then(() => console.log('✅ MongoDB connected'))
@@ -85,11 +85,7 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 app.use(express.json({ limit: '10mb' }));
 
 // Replace the existing CORS middleware with this:
-app.use(cors({
-  origin: 'https://facial-3.onrender.com',  // Your frontend URL hosted on Render
-  methods: ['GET', 'POST'],  // Add other methods if needed
-}));
-
+app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 
 // Registration endpoint
@@ -116,8 +112,8 @@ app.post('/register', (req, res) => {
       return res.status(500).send('Image save failed');
     }
     console.log('✅ Image saved at:', savePath);
-  const recognizerPath = path.join(__dirname, '../python/recognizer.py'); // Adjusted path
-  exec(`python ${recognizerPath} ../python/captured.png`, async (err, stdout, stderr) => {
+
+    exec(`python ../python/recognizer.py ../python/captured.png`, async (err, stdout, stderr) => {
       if (err) {
         console.error('❌ Python execution error:', err);
         return res.status(500).send('Face detection failed');
